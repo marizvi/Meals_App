@@ -9,14 +9,16 @@ class CategoryItem extends StatelessWidget {
   CategoryItem(this.id, this.title, this.color);
 
   void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return CategoryMealsScreen(id, title);
-    }));
+    Navigator.of(ctx).pushNamed(
+      '/categories-meals',
+      //remeber that this argument is a map.
+      arguments: {'id': id, 'title': title},
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // instead of returning a container only we are wrapping it into inwell and then returning,
+    // instead of returning a container only we are wrapping it into inkwell and then returning,
     //because container does not have ontap feature
     return InkWell(
       // using Inkwell because it also gives ripple effect on tap :)

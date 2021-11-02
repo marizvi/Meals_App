@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/categories_screen.dart';
+import 'category_meals_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
-          primarySwatch: Colors.cyan,
+          primarySwatch: Colors.purple,
           accentColor: Colors.amber,
           canvasColor: Color.fromRGBO(255, 254, 229, 1),
           fontFamily: 'Raleway',
@@ -26,25 +27,9 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'RobotoCondensed',
                   fontWeight: FontWeight.w400))),
       home: CategoriesScreen(), // this specifies the main screen of our app
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Daily Meals"),
-      ),
-      body: Center(
-        child: Text("Navigation Theme"),
-      ),
+      routes: {
+        '/categories-meals': (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }
