@@ -13,6 +13,19 @@ class MealItem extends StatelessWidget {
 
   void selectMeal() {}
 
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.Simple:
+        return 'Simple';
+      case Complexity.Challenging:
+        return 'Challenging';
+      case Complexity.Hard:
+        return 'Hard';
+      default:
+        return 'Unknown';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -38,8 +51,44 @@ class MealItem extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ), //used generally when parent widgets are round cornered
+                Positioned(
+                    bottom: 20,
+                    right: 10,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                      width: 300,
+                      color: Colors.black54,
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 26,
+                          color: Colors.white,
+                        ),
+                        // softWrap: true,
+                        overflow: TextOverflow.fade,
+                      ),
+                    ))
               ],
-            )
+            ),
+            Padding(
+                padding: EdgeInsets.all(5),
+                child: Row(
+                  children: [
+                    Row(children: [
+                      Icon(Icons.schedule),
+                      SizedBox(width: 10),
+                      Text('$duration min'),
+                    ]),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Row(children: [
+                      Icon(Icons.work),
+                      SizedBox(width: 10),
+                      Text(complexityText),
+                    ]),
+                  ],
+                ))
           ],
         ),
       ),

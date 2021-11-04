@@ -66,7 +66,7 @@ const DUMMY_MEALS = const [
     'Spaghetti with Tomato Sauce',
     Affordability.Affordable,
     Complexity.Simple,
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+    'https://www.recipetineats.com/wp-content/uploads/2021/08/Spaghetti-Puttanesca_64-SQ.jpg',
     20,
     [
       '4 Tomatoes',
@@ -126,7 +126,7 @@ const DUMMY_MEALS = const [
     'Classic Hamburger',
     Affordability.pricey,
     Complexity.Simple,
-    'https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg',
+    'https://static.toiimg.com/photo/79693966.cms',
     45,
     [
       '300g Cattle Hack',

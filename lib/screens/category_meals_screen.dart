@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:my_app/dummy_data.dart';
 import 'package:my_app/widgets/meal_item.dart';
 
-import '../models/meal.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/models/category.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   @override
