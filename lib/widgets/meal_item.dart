@@ -11,7 +11,9 @@ class MealItem extends StatelessWidget {
   MealItem(this.title, this.imageUrl, this.duration, this.complexity,
       this.affordability);
 
-  void selectMeal() {}
+  void selectMeal(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed('/meal_Detail', arguments: {'title': title});
+  }
 
   String get complexityText {
     switch (complexity) {
@@ -26,10 +28,23 @@ class MealItem extends StatelessWidget {
     }
   }
 
+  String get affordabilityText {
+    switch (affordability) {
+      case Affordability.Affordable:
+        return 'Affordable';
+      case Affordability.pricey:
+        return 'Pricey';
+      case Affordability.Luxurious:
+        return 'Expensive';
+      default:
+        return 'Unknown';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () => selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -71,21 +86,24 @@ class MealItem extends StatelessWidget {
               ],
             ),
             Padding(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 8),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Row(children: [
                       Icon(Icons.schedule),
                       SizedBox(width: 10),
                       Text('$duration min'),
                     ]),
-                    SizedBox(
-                      width: 10,
-                    ),
                     Row(children: [
                       Icon(Icons.work),
                       SizedBox(width: 10),
                       Text(complexityText),
+                    ]),
+                    Row(children: [
+                      Icon(Icons.work),
+                      SizedBox(width: 10),
+                      Text(affordabilityText),
                     ]),
                   ],
                 ))
