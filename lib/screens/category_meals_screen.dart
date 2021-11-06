@@ -18,17 +18,20 @@ class CategoryMealsScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(CategoryTitle as String),
         ),
-        body: ListView.builder(
-          itemBuilder: (ctx, index) {
-            return MealItem(
-                CategoryMeal[index].id,
-                CategoryMeal[index].title,
-                CategoryMeal[index].imageUrl,
-                CategoryMeal[index].duration,
-                CategoryMeal[index].complexity,
-                CategoryMeal[index].affordability);
-          },
-          itemCount: CategoryMeal.length,
+        body: Container(
+          color: Colors.white,
+          child: ListView.builder(
+            itemBuilder: (ctx, index) {
+              return MealItem(
+                  CategoryMeal[index].id,
+                  CategoryMeal[index].title,
+                  CategoryMeal[index].imageUrl,
+                  CategoryMeal[index].duration,
+                  CategoryMeal[index].complexity,
+                  CategoryMeal[index].affordability);
+            },
+            itemCount: CategoryMeal.length,
+          ),
         ));
   }
 }
