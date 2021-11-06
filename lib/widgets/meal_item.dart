@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:my_app/models/meal.dart';
 
 class MealItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
 
-  MealItem(this.title, this.imageUrl, this.duration, this.complexity,
+  MealItem(this.id, this.title, this.imageUrl, this.duration, this.complexity,
       this.affordability);
 
   void selectMeal(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed('/meal_Detail', arguments: {'title': title});
+    Navigator.of(ctx)
+        .pushNamed('/meal_Detail', arguments: {'title': title, 'id': id});
   }
 
   String get complexityText {

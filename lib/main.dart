@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               title: TextStyle(
                   fontSize: 20,
                   fontFamily: 'RobotoCondensed',
-                  fontWeight: FontWeight.w400))),
+                  fontWeight: FontWeight.w600))),
       // home: CategoriesScreen(), // this specifies the main screen of our app
       routes: {
         '/': (ctx) => CategoriesScreen(), // this is our homepage
