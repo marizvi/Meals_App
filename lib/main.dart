@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'DaliMeals',
       theme: ThemeData(
           primarySwatch: Colors.deepPurple,
-          accentColor: Colors.blue,
+          accentColor: Colors.orange[300],
           canvasColor: Colors.white, // main background colour of our app
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(
