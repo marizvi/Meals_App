@@ -41,9 +41,12 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           buildListTile('Meals', Icons.restaurant, () {
-            Navigator.of(context).pushNamed('/');
+            Navigator.of(context).pushReplacementNamed(
+                '/'); // Now it will not store previous pages into the stack
           }),
-          buildListTile('Filters', Icons.settings, () {}),
+          buildListTile('Filters', Icons.settings, () {
+            Navigator.of(context).pushReplacementNamed('/filter_screen');
+          }),
         ],
       ),
     );
