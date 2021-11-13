@@ -8,13 +8,19 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   MealItem(this.id, this.title, this.imageUrl, this.duration, this.complexity,
-      this.affordability);
+      this.affordability, this.removeItem);
 
   void selectMeal(BuildContext ctx) {
-    Navigator.of(ctx)
-        .pushNamed('/meal_Detail', arguments: {'title': title, 'id': id});
+    Navigator.of(ctx).pushNamed('/meal_Detail',
+        arguments: {'title': title, 'id': id}).then((value) {
+      if (value != null) {
+        removeItem(value);
+      }
+    }); // when we push a page and after that when this page gets
+    //popped then ".then" is executed..
   }
 
   String get complexityText {
