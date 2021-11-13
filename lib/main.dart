@@ -1,5 +1,7 @@
+import '../models/meal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:my_app/dummy_data.dart';
 import 'package:my_app/screens/categories_screen.dart';
 import 'package:my_app/screens/filters_screen.dart';
 import 'package:my_app/screens/tab_screen.dart';
@@ -24,7 +26,28 @@ class _MyAppState extends State<MyApp> {
     'vegetarian': false,
   };
 
-  void _setFilters(Map<String, bool> filterdata) {}
+  void _setFilters(Map<String, bool> filterdata) {
+    setState(() {
+      _filters = filterdata;
+      _availableMEals = DUMMY_MEALS.where((meal) {
+        if (_filters['gluten'] == true && !meal.isGluttenFree) {
+          return false;
+        }
+        if (_filters['lactose'] == true && !meal.isLactoseFree) {
+          return false;
+        }
+        if (_filters['vegan'] == true && !meal.isVegan) {
+          return false;
+        }
+        if (_filters['vegan'] == true && !meal.isVegetarian) {
+          return false;
+        }
+        return true;
+      }).toList();
+    });
+  }
+
+  List<Meal> _availableMEals = DUMMY_MEALS;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +70,7 @@ class _MyAppState extends State<MyApp> {
       // home: CategoriesScreen(), // this specifies the main screen of our app
       routes: {
         '/': (ctx) => TabScreen(), // this is our homepage
-        '/categories-meals': (ctx) => CategoryMealsScreen(),
+        '/categories-meals': (ctx) => CategoryMealsScreen(_availableMEals),
         '/meal_Detail': (ctx) => MealDetails(),
         '/filter_screen': (ctx) => FilterScreen(_setFilters),
       },

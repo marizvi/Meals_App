@@ -49,21 +49,21 @@ class _FilterScreenState extends State<FilterScreen> {
                         });
                       }),
                   SwitchListTile(
-                      title: Text("Vegan"),
-                      subtitle: Text('Only include Vegan meals'),
-                      value: _vegan,
-                      onChanged: (newValue) {
-                        setState(() {
-                          _vegan = newValue;
-                        });
-                      }),
-                  SwitchListTile(
                       title: Text("Lactose-free"),
                       subtitle: Text('Only include Lactose-free meals'),
                       value: _lactoseFree,
                       onChanged: (newValue) {
                         setState(() {
                           _lactoseFree = newValue;
+                        });
+                      }),
+                  SwitchListTile(
+                      title: Text("Vegan"),
+                      subtitle: Text('Only include Vegan meals'),
+                      value: _vegan,
+                      onChanged: (newValue) {
+                        setState(() {
+                          _vegan = newValue;
                         });
                       }),
                   SwitchListTile(
