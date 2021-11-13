@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
         '/': (ctx) => TabScreen(), // this is our homepage
         '/categories-meals': (ctx) => CategoryMealsScreen(_availableMEals),
         '/meal_Detail': (ctx) => MealDetails(),
-        '/filter_screen': (ctx) => FilterScreen(_setFilters),
+        '/filter_screen': (ctx) => FilterScreen(_filters, _setFilters),
       },
     );
   }
