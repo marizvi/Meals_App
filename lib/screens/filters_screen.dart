@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:my_app/widgets/main_drawer.dart';
 
 class FilterScreen extends StatefulWidget {
+  final Function saveFilters;
+  FilterScreen(this.saveFilters);
+
   @override
   _FilterScreenState createState() => _FilterScreenState();
 }
@@ -19,6 +22,9 @@ class _FilterScreenState extends State<FilterScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Your Filters"),
+          actions: [
+            IconButton(onPressed: widget.saveFilters(), icon: Icon(Icons.save))
+          ],
         ),
         drawer: MainDrawer(),
         body: Column(

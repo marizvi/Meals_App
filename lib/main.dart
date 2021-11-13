@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/screens/categories_screen.dart';
 import 'package:my_app/screens/filters_screen.dart';
@@ -9,8 +10,22 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Map<String, bool> _filters = {
+    'gluten': false,
+    'lactose': false,
+    'vegan': false,
+    'vegetarian': false,
+  };
+
+  void _setFilters(Map<String, bool> filterdata) {}
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,7 +49,7 @@ class MyApp extends StatelessWidget {
         '/': (ctx) => TabScreen(), // this is our homepage
         '/categories-meals': (ctx) => CategoryMealsScreen(),
         '/meal_Detail': (ctx) => MealDetails(),
-        '/filter_screen': (ctx) => FilterScreen(),
+        '/filter_screen': (ctx) => FilterScreen(_setFilters),
       },
     );
   }
