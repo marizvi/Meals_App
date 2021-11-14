@@ -25,13 +25,17 @@ class _MyAppState extends State<MyApp> {
     'vegan': false,
     'vegetarian': false,
   };
+  List<Meal> _availableMEals = DUMMY_MEALS;
+  List<Meal> _favouriteMeals = [];
 
   void _setFilters(Map<String, bool> filterdata) {
     setState(() {
       _filters = filterdata;
       _availableMEals = DUMMY_MEALS.where((meal) {
+        //function should return true if we want to keep it else false if we want to drop it
         if (_filters['gluten'] == true && !meal.isGluttenFree) {
           return false;
+          //it means that it will not include meals with gluten
         }
         if (_filters['lactose'] == true && !meal.isLactoseFree) {
           return false;
@@ -47,7 +51,19 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  List<Meal> _availableMEals = DUMMY_MEALS;
+  void toggleFavourite(String mealId) {
+    final existingIndex =
+        _favouriteMeals.indexWhere((element) => element.id == mealId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _favouriteMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        DUMMY_MEALS.firstWhere((element) => (element.id == mealId));
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +85,9 @@ class _MyAppState extends State<MyApp> {
                   fontWeight: FontWeight.w600))),
       // home: CategoriesScreen(), // this specifies the main screen of our app
       routes: {
-        '/': (ctx) => TabScreen(), // this is our homepage
+        '/': (ctx) => TabScreen(_favouriteMeals), // this is our homepage
         '/categories-meals': (ctx) => CategoryMealsScreen(_availableMEals),
-        '/meal_Detail': (ctx) => MealDetails(),
+        '/meal_Detail': (ctx) => MealDetails(toggleFavourite),
         '/filter_screen': (ctx) => FilterScreen(_filters, _setFilters),
       },
     );

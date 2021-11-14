@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../dummy_data.dart';
 
 class MealDetails extends StatelessWidget {
+  final Function toggleFavourite;
+  MealDetails(this.toggleFavourite);
+
   Widget buildSectionTitle(context, String text) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
