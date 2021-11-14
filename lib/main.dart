@@ -54,15 +54,21 @@ class _MyAppState extends State<MyApp> {
   void toggleFavourite(String mealId) {
     final existingIndex =
         _favouriteMeals.indexWhere((element) => element.id == mealId);
+    //below condition will execute when we again click the star button to remove from favourite..
     if (existingIndex >= 0) {
       setState(() {
         _favouriteMeals.removeAt(existingIndex);
       });
     } else {
       setState(() {
-        DUMMY_MEALS.firstWhere((element) => (element.id == mealId));
+        _favouriteMeals
+            .add(DUMMY_MEALS.firstWhere((element) => (element.id == mealId)));
       });
     }
+  }
+
+  bool _isMealFavourite(String id) {
+    return _favouriteMeals.any((meal) => meal.id == id);
   }
 
   @override
@@ -87,7 +93,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (ctx) => TabScreen(_favouriteMeals), // this is our homepage
         '/categories-meals': (ctx) => CategoryMealsScreen(_availableMEals),
-        '/meal_Detail': (ctx) => MealDetails(toggleFavourite),
+        '/meal_Detail': (ctx) => MealDetails(toggleFavourite, _isMealFavourite),
         '/filter_screen': (ctx) => FilterScreen(_filters, _setFilters),
       },
     );

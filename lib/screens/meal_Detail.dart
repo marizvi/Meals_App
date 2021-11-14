@@ -3,7 +3,8 @@ import '../dummy_data.dart';
 
 class MealDetails extends StatelessWidget {
   final Function toggleFavourite;
-  MealDetails(this.toggleFavourite);
+  final Function isFavourite;
+  MealDetails(this.toggleFavourite, this.isFavourite);
 
   Widget buildSectionTitle(context, String text) {
     return Container(
@@ -83,14 +84,13 @@ class MealDetails extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Theme.of(context).primaryColor,
-          child: Icon(
-            Icons.delete,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop(id);
-          }),
+        backgroundColor: Theme.of(context).primaryColor,
+        child: Icon(
+          isFavourite(id) ? Icons.star : Icons.star_border_outlined,
+          color: Colors.white,
+        ),
+        onPressed: () => toggleFavourite(id),
+      ),
     );
   }
 }
