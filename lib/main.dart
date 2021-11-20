@@ -20,8 +20,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Map<String, bool> _filters = {
-    'gluten': false,
-    'lactose': false,
+    'gluten': false, //glutenfree
+    'lactose': false, //lactose free
     'vegan': false,
     'vegetarian': false,
   };
@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
   void toggleFavourite(String mealId) {
     final existingIndex =
         _favouriteMeals.indexWhere((element) => element.id == mealId);
-    //below condition will execute when we again click the star button to remove from favourite..
+    //below condition will execute when we again click the star button to remove that meal from favourite..
     if (existingIndex >= 0) {
       setState(() {
         _favouriteMeals.removeAt(existingIndex);
@@ -68,6 +68,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   bool _isMealFavourite(String id) {
+    // any method just returns true or false
     return _favouriteMeals.any((meal) => meal.id == id);
   }
 
