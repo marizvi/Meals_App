@@ -13,6 +13,7 @@ class CategoriesScreen extends StatelessWidget {
               CategoryItem(cat_data.id, cat_data.title, cat_data.color))
           .toList(),
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          // will generate number of columns on the basis of device size
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
           crossAxisSpacing: 15,
